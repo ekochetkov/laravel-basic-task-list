@@ -28,3 +28,9 @@ Database Migrations
 Migration start
 
 `php artisan migrate`
+
+## Models
+
+Make task model
+
+`php artisan make:model Task` => `app/Task.php`
