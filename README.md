@@ -1,3 +1,7 @@
+# Common
+
+`php artisan serve`
+
 # Installing laravel
 
 1. `composer global require laravel/installer`
@@ -34,3 +38,4 @@ Migration start
 Make task model
 
 `php artisan make:model Task` => `app/Task.php`
+
