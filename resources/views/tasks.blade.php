@@ -52,14 +52,22 @@
                     <tbody>
                         @foreach ($tasks as $task)
                             <tr>
-                                <!-- Task Name -->
-                                <td class="table-text">
-                                    <div>{{ $task->name }}</div>
-                                </td>
+                                <tr>
+                                    <!-- Task Name -->
+                                    <td class="table-text">
+                                        <div>{{ $task->name }}</div>
+                                    </td>
 
-                                <td>
-                                    <!-- TODO: Delete Button -->
-                                </td>
+                                    <!-- Delete Button -->
+                                    <td>
+                                        <form action="/task/{{ $task->id }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+
+                                            <button>Delete Task</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             </tr>
                         @endforeach
                     </tbody>
