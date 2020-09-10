@@ -7,6 +7,8 @@
 `php artisan view:clear`
 `php artisan optimize`
 
+`git rm --cached public/css/app.css`
+
 # Installing laravel
 
 1. `composer global require laravel/installer`
@@ -49,4 +51,9 @@ Installing bootstrap
 `composer require laravel/ui`
 `php artisan ui bootstrap`
 `npm install`
+`npm run dev`
+
+Install Font Awesome in Laravel
+
+`npm install --save @fortawesome/fontawesome-free`
 `npm run dev`
