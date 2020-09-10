@@ -44,3 +44,9 @@ Make task model
 
 `php artisan make:model Task` => `app/Task.php`
 
+Installing bootstrap
+
+`composer require laravel/ui`
+`php artisan ui bootstrap`
+`npm install`
+`npm run dev`
