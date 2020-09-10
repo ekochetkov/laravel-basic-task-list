@@ -4,77 +4,83 @@
 
     <!-- Bootstrap Boilerplate... -->
 
-    <div class="panel-body">
-        <!-- Display Validation Errors -->
-        @include('common.errors')
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">New Task</h5>
 
-        <!-- New Task Form -->
-        <form action="/task" method="POST" class="form-horizontal">
-            {{ csrf_field() }}
+            <!-- Display Validation Errors -->
+            @include('common.errors')
 
-            <!-- Task Name -->
-            <div class="form-group">
-                <label for="task" class="col-sm-3 control-label">Task</label>
+            <!-- New Task Form -->
+            <form action="/task" method="POST" class="form-horizontal">
+                {{ csrf_field() }}
 
-                <div class="col-sm-6">
-                    <input type="text" name="name" id="task-name" class="form-control">
+                <!-- Task Name -->
+                <div class="form-group">
+                    <label for="task" class="col-sm-3 control-label">Task</label>
+
+                    <div class="col-sm-6">
+                        <input type="text" name="name" id="task-name" class="form-control">
+                    </div>
                 </div>
-            </div>
 
-            <!-- Add Task Button -->
-            <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-6">
-                    <button type="submit" class="btn btn-default">
-                        <i class="fa fa-plus"></i> Add Task
-                    </button>
+                <!-- Add Task Button -->
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-plus"></i> Add Task
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+
+        </div>
     </div>
 
-    <!-- TODO: Current Tasks -->
-    @if (count($tasks) > 0)
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Current Tasks
-            </div>
+<!-- TODO: Current Tasks -->
+@if (count($tasks) > 0)
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Current Tasks</h5>
+            <!--<h6 class="card-subtitle mb-2 text-muted">Panel subtitle</h6>-->
+            <table class="table table-striped">
 
-            <div class="panel-body">
-                <table class="table table-striped task-table">
+                <!-- Table Headings 
+                <thead>
+                    <th>Task</th>
+                    <th>&nbsp;</th>
+                </thead>
+                -->
 
-                    <!-- Table Headings -->
-                    <thead>
-                        <th>Task</th>
-                        <th>&nbsp;</th>
-                    </thead>
-
-                    <!-- Table Body -->
-                    <tbody>
-                        @foreach ($tasks as $task)
+                <!-- Table Body -->
+                <tbody>
+                    @foreach ($tasks as $task)
+                        <tr>
                             <tr>
-                                <tr>
-                                    <!-- Task Name -->
-                                    <td class="table-text">
-                                        <div>{{ $task->name }}</div>
-                                    </td>
+                                <!-- Task Name -->
+                                <td class="table-text">
+                                    <div>{{ $task->name }}</div>
+                                </td>
 
-                                    <!-- Delete Button -->
-                                    <td>
-                                        <form action="/task/{{ $task->id }}" method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
+                                <!-- Delete Button -->
+                                <td>
+                                    <form action="/task/{{ $task->id }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
 
+                                        <button  type="submit" class="btn btn-danger">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
 
-
-                                            <button>Delete Task</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                    </form>
+                                </td>
                             </tr>
-                        @endforeach
-                    </tbody>
+                        </tr>
+                    @endforeach
+                </tbody>
                 </table>
-            </div>
         </div>
-    @endif
+    </div>
+@endif
+    
 @endsection
